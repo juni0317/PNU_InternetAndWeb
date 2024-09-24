@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+        td {
+            text-align: center;
+            padding: 7px;
+        }
+
+        .firstCol {
+            font-weight: bold;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function returnMax () {
+        document.write("<h2> Get two and return the max</h2>", "<hr>");
+
+        let firstInt = prompt("Enter the first integer", 0);
+        firstInt = parseInt(firstInt)
+
+        let secondInt = prompt("Enter the second integer", 0);
+        secondInt = parseInt(secondInt)
+
+        if (firstInt > secondInt) {
+            document.write(firstInt," is greater than ",secondInt);
+        } else if (firstInt < secondInt) {
+            document.write(firstInt," is smaller than ",secondInt);
+        } else {
+            document.write(firstInt, " and ", secondInt, " are equal");
+        }
+        }
+
+        //returnMax();
+
+        function squaredTable () {
+            document.write("<h3> Getting squared numbers and making a table. <br/> <br/> Calculating n^2 from n=0~N </h3>", "<hr>");
+
+            let number = parseInt(prompt("Enter a positive integer", 0));
+            
+            document.write("You entered : ", number, '<br data-mce-bogus="1">');
+            document.write("<br>")
+            document.write("<table border>");
+
+            document.write("<tr>");
+            document.write('<td class="firstCol">'+"n"+"</td>");
+            for (let i = 0; i <= number; i++) {
+                document.write("<td>"+i+"</td>");
+            }
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write('<td class="firstCol">'+"n^2"+"</td>");
+            for (let j = 0; j <= number; j++) {
+                    document.write("<td>"+j*j+"</td>");
+            }
+            document.write("</tr>");
+
+            document.write("</table>");
+
+
+        }
+
+        squaredTable();
+
+        function introduce () {
+            let name = prompt("Enter your name : ");
+            let major = prompt("Enter your major : ");
+            
+            if (name != "" && major != "") {
+                document.write("Hello, my name is ", name, " and my major is ", major, ".");
+            } else if (name != "" && major == "") {
+                document.write("Hello, my name is ", name, ".");
+            } else if (name == "" && major != "") {
+                document.write("Hello, my major is ", major, ".");
+            } else {
+                document.write("Hello!")
+            }
+            document.write("<hr>");
+        }
+
+        //introduce();
+
+        function getSum () {
+            document.write("<h1> Getting even and odd sum </h1>", "<hr>");
+
+            let input = parseInt(prompt("Enter the number"));
+            document.write("Number you entered : ", input, "<br />");
+            let sumAll = 0;
+            let sumEven = 0;
+            let sumOdd = 0;
+
+            for (let i=1; i<=input; i++) {
+                sumAll += i;
+                if (i % 2 == 0) {
+                    sumEven +=i;
+                } else {
+                    sumOdd += i;
+                }
+                
+            }
+            document.write("Sum of all numbers : ", sumAll, "<br />");
+            document.write("Sum of all even numbers : ", sumEven, "<br />");
+            document.write("Sum of all odd numbers : ", sumOdd, "<br />");
+            
+        }
+
+        //getSum();
+
+
+    </script>
+</body>
+</html>

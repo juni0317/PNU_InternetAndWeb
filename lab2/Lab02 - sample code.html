@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab 02 - CSS (Part 1)</title>
+<!-- ---------------------------------------------- -->
+<style>
+body {
+	background-color: rgb(219, 219, 219);
+	margin-left: 30px;
+	margin-right: 30px;
+	font-style: Verdana;
+}
+h1 {
+	text-align : center;
+	color : yellow;
+	text-shadow : 2px 2px 3px blue;
+}
+h2{
+	color:blue;
+	text-align: left;
+}
+.card {
+	width : 100px;
+	height : 140px;
+	background-image : url("media/cards/back.png");
+	background-size : 100px 140px;
+}
+
+div#img:hover {
+	background-image : url("media/cards/Playing_card_club_7.svg");
+}
+div#img2:hover {
+	background-image : url("media/cards/Playing_card_diamond_10.svg");
+}
+div#img3:hover {
+	background-image : url("media/cards/Playing_card_spade_3.svg");
+}
+div#img4:hover {
+	background-image : url("media/cards/Playing_card_spade_A.svg");
+}
+img:hover {
+	box-shadow : 0px 0px 10px blue;
+}
+
+hr {
+	height: 3px;
+	background-color: yellow;
+	border: 0px solid;
+}
+p{
+	text-indent: 1em;
+	text-align: left;
+}
+.p1:hover{
+	background-color: yellow;
+}
+.p2:hover{
+	background-color: greenyellow;
+}
+.pnu{
+	float: left;
+}
+.bottom{
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+</style>
+<!-- ---------------------------------------------- -->
+</head>
+<body>
+<!-- ---------------------------------------------- -->
+<h1>Playing Blackjack</h1>
+<!-- ---------------------------------------------- -->
+<hr>
+<!-- ---------------------------------------------- -->
+<center>
+	<h2>1. Game and rule</h2>
+<p class="p1"><span style="color:red; font-weight: bold;">Blackjack</span> (formerly Black Jack and Vingt-Un) is a casino banking game. It is the most widely played casino banking game in the world. It uses decks of 52 cards and descends from a global family of casino banking games known as Twenty-One. This family of card games also includes the European games Vingt-et-Un and Pontoon, and the Russian game Ochko. Blackjack players do not compete against each other. The game is a comparing card game where each player competes against the dealer.</p>
+<p class="p2">The object of the game is to win money by creating card totals higher than those of the dealer's hand but <span style="color: red; font-weight: bold;">not exceeding 21</span>, or by stopping at a total in the hope that the dealer will bust. On their turn, players choose to "hit" (take a card), "stand" (end their turn and stop without taking a card), "double" (double their wager, take a single card, and finish), "split" (if the two cards have the same value, separate them to make two hands), or "surrender" (give up a half-bet and retire from the game).</p>
+
+
+<!-- ---------------------------------------------- -->
+<hr>
+<!-- ---------------------------------------------- -->
+<center>
+	<h2>2. Sample game</h2>
+	<table border ="0">
+		<thead>
+			<tr><th></th><th>1st hand</th><th>2nd hand</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span style="color:red; font-weight: bold;">Dealer</span></td>
+				<td><div class="card" id="img"></div></td>
+				<td><div class="card" id="img2"></div></td>
+				<td><span style="text-align: left;">Dealer's hands: <br>
+				move mouse cursor over each card<br> to see the card face</span></td>
+			</tr>
+			<tr>
+				<td><span style="color:blue; font-weight: bold;">Player</span></td>
+				<td><div class="card" id="img3"></div></td>
+				<td><div class="card" id="img4"></div></td>
+				<td><span style="text-align: left;">Player's hands: <br>
+				move mouse cursor over each card<br> to see the card face</span></td>
+		</tr>
+		</tbody>
+	</table>
+</center>
+</center>	
+<!-- ---------------------------------------------- -->
+<hr>
+<!-- ---------------------------------------------- -->
+<center>
+	<h2>3. Online resources</h2>
+	<iframe src="leftiframe.html" name="icons" width="200" height="500" frameborder="0">
+	</iframe>
+	<iframe src="media/game-table.png" name="frame" width="700" height="500" frameborder="0" allowfullscreen></iframe>
+</center>
+<!-- ---------------------------------------------- -->
+<hr>
+<div class="bottom">
+<img class="pnu" src="media/PNU.png" width="100" height="100">
+Jeong Hyeokjun<br>
+Computer Science and Engineering<br>
+Pusan National University</span>
+</div>
+</body>
+</html>

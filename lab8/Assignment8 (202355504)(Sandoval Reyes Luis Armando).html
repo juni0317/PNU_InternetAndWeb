@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
+                integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
+                crossorigin="anonymous">
+        </script>
+        <script>
+            function getUserInput2()
+            {
+                var userInput2 = document.getElementById("elementsnumber").value;
+                if (userInput2.length < 1)
+                {
+                    returnString1 = "(empty)";
+                }
+                else
+                {
+                    returnString1 = userInput2;
+                }
+                document.getElementById("userInput2DisplayArea").innerHTML = returnString1;
+                return returnString1
+            }
+            function getUserInput()
+            {
+                var userInput = document.getElementById("userInputArea").value;
+                var returnString = ""
+                if (userInput.length < 1)
+                {
+                    returnString = "(empty)";
+                }
+                else
+                {
+                    returnString = userInput;
+                }
+                document.getElementById("userInputDisplayArea").innerHTML = returnString;
+                return returnString;
+            }
+            function sendQuery()
+            {
+                var myKey = "92961cae8f25702eec6c639e7acfed11";
+                var mySearchKeyword = getUserInput();
+                var request = $.ajax({
+                    method: "GET",
+                    url: "https://dapi.kakao.com/v3/search/book?target=title",
+                    data: {query: mySearchKeyword},
+                    headers: {Authorization: "KakaoAK " + myKey}
+                })
+                console.log(request)
+                request.done(function(msg){
+                    var limit = document.getElementById("userInput2DisplayArea").textContent;
+                    console.log(limit)
+                    if (limit == "(empty)")
+                    {
+                        alert("불가")
+                    }
+                    else
+                    {   var ht1 = "";
+                        var ht2 = "";
+                        limit = parseInt(limit);
+                        for (var i = 0; i<limit; i++)
+                        {
+                            ht1 += "<strong>" + msg.documents[i].title + "//           </strong>";
+                            ht2 += "<img src = '"+msg.documents[i].thumbnail+"'>"
+                            
+                        }
+                        document.getElementById("bookTitleDisplayArea").innerHTML = ht1 + "<br>";
+                        document.getElementById("bookImageDisplayArea").innerHTML = ht2;
+                    }
+                });
+                request.fail(function(jqXHR, textStatus) {
+                    document.write("- failed : " + textStatus + "<br>");
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <hr>
+        <form>
+            Enter a book title:
+            <input type="text" id="userInputArea" size="20">
+            <input type="button" onclick="getUserInput()" value="click to confirm">
+            <input type="button" onclick="sendQuery()" value="sendQuery"><br>
+            Number of elements: <input type=text id="elementsnumber">
+            <input type="button" onclick="getUserInput2()" value="click to confirm">
+        </form>
+        User-entered book title:
+        <span id="userInputDisplayArea" style="background-color: yellow;"></span><br>
+        No. of elements:
+        <span id="userInput2DisplayArea" style="background-color: yellow;"></span>
+        <hr>
+        <span id="bookTitleDisplayArea"></span>
+        <span id="bookImageDisplayArea"></span>
+        <hr>
+    </body>
+</html>

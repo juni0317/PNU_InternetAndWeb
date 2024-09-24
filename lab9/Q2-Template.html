@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>[Q2] String matching</title>
+<style>
+	body {
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 20px;
+	}
+	span {color: red;}
+</style>
+</head>
+<body>
+<h3>[Q2] String matching</h3>
+Enter a sentence (or a long word) and a short word.
+Then, find the earliest match!</h3>
+<hr>
+<script>
+let sentence = "";
+let word = "";
+let index = 0;
+let coloring = "";
+
+function getSentence(){
+	sentence = prompt("Enter a sentence or a long word", "Hello");
+	document.getElementById("sentence").innerHTML = "Sentence : " + sentence;
+}
+
+function getWord(){
+	word = prompt("Enter a short word", "ell");
+	document.getElementById("word").innerHTML = "Searching word : " + word;
+}
+
+function getResult(){
+	index = sentence.indexOf(word)
+	coloring = sentence.replace(word, '<span>' + word + '</span>');
+		document.getElementById("index").innerHTML = "Result (index) : Found at index " + index;
+		document.getElementById("coloring").innerHTML = "Result (coloring) : " + coloring; 
+}
+
+
+
+
+
+// you'll find the 'substr' function useful
+// sentence.substr(from_index, how_many) 
+
+</script>
+<button onclick="getSentence()">Enter a sentence</button>
+<button onclick="getWord()">Enter a word</button>
+<button onclick="getResult()">Find the first match</button>
+<div id="sentence">Sentence : ?</div>
+<div id="word">Searching word : ?</div>
+<div id="index">Result (index) : ?</div>
+<div id="coloring">Result (coloring) : ?</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        ul#myMenu > li { 
+            display:inline-block; 
+            width:200px; 
+            position:relative; 
+        }
+        ul#myMenu > li ul { 
+            display:none; 
+            position:absolute; 
+        }
+        ul#myMenu > li:hover ul { 
+            display:block; 
+            background-color: gray;
+        }
+        .menu {
+        background-color: gray;
+        display: flex;
+        }
+
+        .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        }
+
+        .menu li {
+        margin-right: 0px;
+        }
+
+        .menu a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        }
+
+        .bottom{
+        display: flex;
+        align-items: center;
+        position: relative;
+        left: 35%;
+        }
+
+    </style>
+    <title>Dropdown menu</title>
+</head>
+<body>
+<h1 style="text-shadow: 2px 2px 2px purple; color: rgb(255, 147, 38); text-align: center;">
+    Welcome to my home page!</h1>
+<div class="menu">
+    <ul id ="myMenu">
+        <li style="margin-left: 50px;"><a href="rgb.html" target="iframe">Home (click)</a></li>
+        <li class="has-submenu">
+            <a>Info (hover, no-click)</a>
+            <ul id = "submenu">
+                <li><a href="computer.html" target="iframe" >Computer (click)</a></li>
+                <li><a href="turing.html" target="iframe" >Alan Turing (click)</a></li>
+            </ul>
+        </li>
+        <li><a href="contacts.html" target="iframe">Contacts (click)</a></li>
+    </ul>
+</div>
+<br>
+<img src="media/beach.jpg" width="100%" height="300px">
+<iframe name="iframe" src="rgb.html" width="100%" height="500px" style="border: 0;"></iframe>
+<hr>
+<div class="bottom">
+    <img class="pnu" src="media/PNU.png", width="100px" height="100px">
+    <p class="me">Jeong Hyeokjun<br>
+    Computer Science and Engineering<br>
+    Pusan National University
+    </p>
+</div>
+</body>
+</html>

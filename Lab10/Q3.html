@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My wish list</title>
+<script>
+function addItem(parent) {
+  let text = prompt("Enter the name of the city:", "");
+  if(text == null || text == "") return;
+
+  let newItem = document.createElement("li");
+  let textNode = document.createTextNode(text);
+  newItem.appendChild(textNode);
+  
+  let editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.onclick = editItem;
+  newItem.appendChild(editBtn);
+
+  let removeBtn = document.createElement("button");
+  removeBtn.textContent = "Remove";
+  removeBtn.onclick = removeItem;
+  newItem.appendChild(removeBtn);
+  
+  parent.appendChild(newItem);
+}
+
+function editItem(event) {
+  let listItem = event.target.parentElement;
+  let newText = prompt("Edit the name of the city:", listItem.firstChild.textContent);
+  if (newText !== null && newText.trim() !== "") {
+    listItem.firstChild.textContent = newText;
+  }
+  
+  // 이벤트 버블링을 막기 위해
+  event.stopPropagation();
+}
+
+function removeItem(event) {
+  let listItem = event.target.parentElement;
+  listItem.remove();
+
+  event.stopPropagation();
+}
+</script>
+</head>
+<body>
+<h3>[Q3] My wish list</h3>
+<hr>
+<h4>Cities to visit: (click here to add a new city)</h4>
+<ul style="background-color:rgb(197, 197, 197)"
+  onclick="addItem(this)">
+   <li>Busan, South Korea (not allowed to edit or remove)</li>
+</ul>
+</body>
+</html>

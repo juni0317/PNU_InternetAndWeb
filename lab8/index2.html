@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
+            crossorigin="anonymous">
+    </script>
+    <hr>
+    <form>
+        Enter a book title :
+        <input type="text" id="userInputArea" size="20">
+        <input type="button" onclick="getUserInput()" value="click to confirm">
+        
+    </form>
+    <form>
+        How many items to display :
+        <select id="item" name="items">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <input type="button" onclick="getNumberInput()" value="click to confirm">
+    </form>
+    <hr>
+    <script>
+        function getUserInput(){
+            var userInput = document.getElementById("userInputArea").value;
+            var returnString = ""
+            if(userInput.length < 1) returnString = "(empty)";
+            else returnString = userInput;
+            document.getElementById("userInputDisplayArea").innerHTML = returnString;
+            return returnString
+        }
+
+        function getNumberInput(){
+            var userInput = document.getElementById("item").value;
+            var returnString = ""
+            if(userInput.length < 1) returnString = "(empty)";
+            else returnString = userInput;
+            document.getElementById("ItemsDisplayArea").innerHTML = returnString;
+            return returnString
+        }
+
+        function sendQuery(){
+            var myKey = "eb573ef4ac262b27a18f4db3b292fcbb";
+            var mySearchKeyword = getUserInput();
+            var request = $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: { query : mySearchKeyword },
+                headers : {Authorization: "KakaoAK " + myKey}
+            })
+            
+            request.done(function (msg){
+                for (var i = 0; i<3; i++){
+                document.getElementById("bookTitleDisplayArea").innerHTML 
+                    = "<strong>" + msg.documents[i].title + "</strong><br><br>";
+                document.getElementById("bookImageDisplayArea").innerHTML
+                    = "<img src='" + msg.documents[i].thumbnail + "'/>";
+                }
+            });
+            request.fail(function(jqXHR, textStatus){
+                document.write("- failed : " + textStatus + "<br>");
+            });
+
+        }
+    </script>
+    User-entered book title :
+    <span id="userInputDisplayArea" style="background-color: yellow;"></span>
+    <br>
+    Number of items to display :
+    <span id="ItemsDisplayArea" style="background-color: yellow;"></span>
+    <hr>
+    <input type="button" onclick="sendQuery()" value="Send Query"><hr>
+    <span id="bookTitleDisplayArea"></span>
+    <span id="bookImageDisplayArea"></span>
+    
+</body>
+</html>
